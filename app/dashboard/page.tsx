@@ -9,7 +9,12 @@ const DashboardPage = () => {
   const [seatsBooked, setSeatsBooked] = useState<number[]>([]); // Store booked seat numbers
   const [numSeats, setNumSeats] = useState<number>(0); // Seats to book
   const [error, setError] = useState<string | null>(null);
-  const token = localStorage.getItem("token");
+  let token:any; 
+
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      token = storedToken;
+    }
 
   // Fetch initial seat data (optional, assuming seats are stored in API)
   useEffect(() => {
